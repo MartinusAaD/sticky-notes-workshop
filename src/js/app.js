@@ -1,4 +1,4 @@
-import addNotes from "./addNotes";
+import addNotes from "./addNotes.js";
 
 // Selecting elements
 const form = document.querySelector(".form");
