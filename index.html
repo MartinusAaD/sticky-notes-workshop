@@ -10,7 +10,48 @@
     <title>Sticky Notes App</title>
   </head>
   <body>
-    <div id="app"></div>
+    <header class="header">
+      <h1 class="header__title">Sticky Notes</h1>
+    </header>
+
+    <main>
+      <section class="form-container">
+        <form class="form">
+          <div class="form__input-container">
+            <label for="subject">Note subject</label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              placeholder="Enter note's subject"
+              maxlength="20"
+              class="form__input form__input-subject"
+            />
+            <label for="date">Date</label>
+            <input
+              type="date"
+              id="date"
+              name="date"
+              placeholder="Enter note's date"
+              class="form__input form__input-date"
+            />
+          </div>
+
+          <label for="note">Note text</label>
+          <textarea
+            name="note"
+            id="note"
+            placeholder="Enter note's text (Max 100 characters...)"
+            maxlength="100"
+            class="form__input-note"
+            rows="5"
+          ></textarea>
+          <button type="submit" class="form__submit-button">Add Note</button>
+          <p class="form__error-text">Error</p>
+        </form>
+      </section>
+      <section class="notes-container"></section>
+    </main>
     <script type="module" src="/src/app.js"></script>
   </body>
 </html>
