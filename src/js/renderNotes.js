@@ -1,10 +1,11 @@
 import { displayDeleteModal } from "./deleteNotes.js";
+import { enterEditMode } from "./editNotes.js";
 
 // Render Notes
 const renderNotes = () => {
   const notesList = JSON.parse(localStorage.getItem("notes"));
-
   const notesContainer = document.querySelector(".notes-container");
+  const submitButton = document.querySelector(".form__submit-button");
 
   if (notesList) {
     notesContainer.innerHTML = ""; //Clears the container to avoid duplication
@@ -59,6 +60,16 @@ const renderNotes = () => {
       // Adding event listeners
       deleteButton.addEventListener("click", () => {
         displayDeleteModal(note.subject, note.id);
+      });
+
+      editButton.addEventListener("click", () => {
+        enterEditMode(note.id);
+        document.querySelectorAll(".note-card").forEach((note) => {
+          note.classList.remove("note-card--edited");
+        });
+        noteContainer.classList.add("note-card--edited");
+        submitButton.textContent = "Confirm edit";
+        submitButton.classList.add("note--card--edited");
       });
     });
   }

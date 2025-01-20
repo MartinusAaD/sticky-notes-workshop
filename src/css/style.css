@@ -214,3 +214,8 @@ main {
 .delete-modal__button-cancel:hover {
   opacity: 0.8;
 }
+
+/* Edit mode */
+.note-card--edited {
+  background-color: yellow;
+}

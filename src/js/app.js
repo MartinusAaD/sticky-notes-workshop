@@ -1,7 +1,9 @@
 import { validate } from "uuid";
-import addNotes from "./addNotes.js";
+import addNotes, { generateRandomNumber } from "./addNotes.js";
 import renderNotes from "./renderNotes.js";
 import validateNotes from "./validateNotes.js";
+import { editNote, editState, enterEditMode } from "./editNotes.js";
+import storeNotes from "./storeNotes.js";
 
 // Initial Render
 document.addEventListener("DOMContentLoaded", renderNotes);
@@ -20,6 +22,27 @@ form.addEventListener("submit", (e) => {
     return;
   }
   //
-  addNotes(inputSubject, inputDate, inputText);
-  renderNotes();
+  if (!editState.isEditMode) {
+    addNotes(inputSubject, inputDate, inputText);
+    renderNotes();
+  } else {
+    const notesList = JSON.parse(localStorage.getItem("notes"));
+
+    const editedNote = {
+      subject: inputSubject.value.trim(),
+      date: inputDate.value.trim(),
+      text: inputText.value.trim(),
+      rotation: generateRandomNumber,
+    };
+    const updatedNoteList = notesList.map((note) => {
+      return note.id === editState.currentEditId ? editedNote : note;
+    });
+
+    storeNotes(updatedNoteList);
+    renderNotes();
+    editState.currentEditId = null;
+    editState.isEditMode = false;
+    submitButton.classList.remove("note-card--edited");
+    submitButton.textContent = "Add note";
+  }
 });
