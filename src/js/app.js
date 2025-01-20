@@ -1,8 +1,8 @@
 import addNotes from "./addNotes.js";
 import renderNotes from "./renderNotes.js";
 
-// Render notes upon entering
-renderNotes();
+// Initial Render
+document.addEventListener("DOMContentLoaded", renderNotes);
 
 // Selecting elements
 const form = document.querySelector(".form");

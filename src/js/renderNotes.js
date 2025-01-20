@@ -25,8 +25,7 @@ const renderNotes = () => {
       detailsToolsContainer.append(subjectDateContainer, editDeleteContainer);
       noteContainer.append(noteText);
       subjectDateContainer.append(noteSubject, noteDate);
-      editDeleteContainer.append(deleteButton, 
-        editButton);
+      editDeleteContainer.append(deleteButton, editButton);
 
       // Inserting notes data
       noteSubject.textContent = note.subject;
