@@ -115,7 +115,6 @@ main {
 .note-container {
   min-height: 200px;
   max-height: 200px;
-  max-width: 250px;
   background-color: var(--color-note-background);
   line-break: anywhere; /* If text is too big, it continues on the next line */
   hyphens: auto;
