@@ -29,10 +29,11 @@ form.addEventListener("submit", (e) => {
     const notesList = JSON.parse(localStorage.getItem("notes"));
 
     const editedNote = {
+      id: editState.currentEditId,
       subject: inputSubject.value.trim(),
       date: inputDate.value.trim(),
       text: inputText.value.trim(),
-      rotation: generateRandomNumber,
+      rotation: generateRandomNumber(),
     };
     const updatedNoteList = notesList.map((note) => {
       return note.id === editState.currentEditId ? editedNote : note;

@@ -57,6 +57,9 @@ const renderNotes = () => {
 
       noteContainer.style.transform = `rotate(${note.rotation}deg)`;
 
+      submitButton.textContent = "Add Note";
+      submitButton.classList.remove("note-card--edited");
+
       // Adding event listeners
       deleteButton.addEventListener("click", () => {
         displayDeleteModal(note.subject, note.id);
@@ -64,12 +67,18 @@ const renderNotes = () => {
 
       editButton.addEventListener("click", () => {
         enterEditMode(note.id);
-        document.querySelectorAll(".note-card").forEach((note) => {
+        document.querySelectorAll(".note-container").forEach((note) => {
           note.classList.remove("note-card--edited");
         });
         noteContainer.classList.add("note-card--edited");
         submitButton.textContent = "Confirm edit";
-        submitButton.classList.add("note--card--edited");
+        submitButton.classList.add("note-card--edited");
+      });
+      noteContainer.addEventListener("click", () => {
+        document.querySelectorAll(".note-container").forEach((card) => {
+          card.style.zIndex = 0;
+        });
+        noteContainer.style.zIndex = 1;
       });
     });
   }
